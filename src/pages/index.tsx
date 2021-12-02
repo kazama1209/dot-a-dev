@@ -1,32 +1,70 @@
-import styled from "styled-components";
-import Button from "@material-ui/core/Button";
+import React, { useEffect } from "react";
 
-const StyledWrapper = styled.section`
-  min-height: 100vh;
-  padding: 4rem;
-  background: bisque;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+import { ISourceOptions } from "tsparticles";
+import { StyledParticles, bubbles } from "styles/home/Particles";
+import { StyledContentBox } from "styles/common";
 
-const StyledButton = styled(Button)`
-  background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%);
-  border-radius: 3px;
-  border: 0;
-  color: ${(props) => (props.color ? props.color : "white")};
-  height: 48px;
-  padding: 0 30px;
-  box-shadow: 0 3px 5px 2px rgba(255, 105, 135, 0.3);
-`;
+import ShutterAnimation from "components/home/ShutterAnimation";
+import BgVideo from "components/home/BgVideo";
+import Slider from "components/home/Slider";
+import Panels from "components/home/Panels";
+import Carousel from "components/home/Carousel";
+import Cards from "components/home/Cards";
 
 const Home: React.FC = () => {
+  /* スクロール禁止 */
+  const noScroll = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    event.preventDefault();
+  };
+
+  /* スクロール禁止を付与 */
+  const addNoScroll = () => {
+    // @ts-ignore
+    document.addEventListener("mousewheel", noScroll, {
+      passive: false,
+    });
+  };
+
+  /* スクロール禁止を解除 */
+  const removeNoScroll = () => {
+    // @ts-ignore
+    document.removeEventListener("mousewheel", noScroll, {
+      passive: false,
+    });
+  };
+
+  useEffect(() => {
+    /* ページトップまで戻す */
+    window.onbeforeunload = () => {
+      window.scrollTo(0, 0);
+    };
+
+    addNoScroll();
+
+    /* シャッターアニメーションが終わってからスクロールが可能になる事を想定 */
+    setTimeout(() => {
+      removeNoScroll();
+    }, 2400);
+  });
+
   return (
-    <>
-      <StyledWrapper>
-        <StyledButton variant="outlined">Hello World!</StyledButton>
-      </StyledWrapper>
-    </>
+    <React.Fragment>
+      <ShutterAnimation />
+      <BgVideo />
+      <StyledParticles options={bubbles as ISourceOptions} />
+      <StyledContentBox margin={{ top: 80 }}>
+        <Slider />
+      </StyledContentBox>
+      <StyledContentBox margin={{ top: 80 }}>
+        <Panels />
+      </StyledContentBox>
+      <StyledContentBox margin={{ top: 32 }}>
+        <Carousel />
+      </StyledContentBox>
+      <StyledContentBox margin={{ top: 72, bottom: 80 }}>
+        <Cards />
+      </StyledContentBox>
+    </React.Fragment>
   );
 };
 

@@ -4,7 +4,19 @@ import { ThemeProvider as StyledComponentsThemeProvider } from "styled-component
 import { ThemeProvider as MaterialUIThemeProvider } from "@material-ui/core/styles";
 import { StylesProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../styles/theme";
+import theme from "styles/theme";
+import { createGlobalStyle } from "styled-components";
+import * as colorCodes from "constants/colorCodes";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: ${colorCodes.BLACK};
+    font-family: "Pathway Gothic One", Helvetica Neue, Helvetica, Arial,
+      sans-serif;
+  }
+`;
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   useEffect(() => {
@@ -21,6 +33,7 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <MaterialUIThemeProvider theme={theme}>
         <StyledComponentsThemeProvider theme={theme}>
           <CssBaseline />
+          <GlobalStyle />
           <Component {...pageProps} />
         </StyledComponentsThemeProvider>
       </MaterialUIThemeProvider>
