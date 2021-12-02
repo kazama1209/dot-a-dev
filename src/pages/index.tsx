@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import Head from "next/head";
 
+import { useMediaQuery } from "react-responsive";
+
 import { ISourceOptions } from "tsparticles";
 import { StyledParticles, bubbles } from "styles/home/Particles";
 import { StyledContentBox } from "styles/common";
@@ -13,6 +15,10 @@ import Carousel from "components/home/Carousel";
 import Cards from "components/home/Cards";
 
 const Home: React.FC = () => {
+  const isMobileScreen: boolean = useMediaQuery({
+    query: "(max-width: 599px)",
+  });
+
   /* スクロール禁止 */
   const noScroll = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     event.preventDefault();
@@ -53,18 +59,24 @@ const Home: React.FC = () => {
       <Head>
         <title>Dot.A-dev</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
       </Head>
       <ShutterAnimation />
       <BgVideo />
       <StyledParticles options={bubbles as ISourceOptions} />
-      <StyledContentBox margin={{ top: 80 }}>
-        <Slider />
-      </StyledContentBox>
-      <StyledContentBox margin={{ top: 80 }}>
-        <Panels />
-      </StyledContentBox>
       <StyledContentBox margin={{ top: 32 }}>
         <Carousel />
+      </StyledContentBox>
+      {!isMobileScreen && (
+        <StyledContentBox margin={{ top: 80 }}>
+          <Panels />
+        </StyledContentBox>
+      )}
+      <StyledContentBox margin={{ top: 80 }}>
+        <Slider />
       </StyledContentBox>
       <StyledContentBox margin={{ top: 72, bottom: 80 }}>
         <Cards />
