@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Head from "next/head";
 
 import { ISourceOptions } from "tsparticles";
 import { StyledParticles, bubbles } from "styles/home/Particles";
@@ -49,6 +50,10 @@ const Home: React.FC = () => {
 
   return (
     <React.Fragment>
+      <Head>
+        <title>Dot.A-dev</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <ShutterAnimation />
       <BgVideo />
       <StyledParticles options={bubbles as ISourceOptions} />
