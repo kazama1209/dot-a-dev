@@ -103,18 +103,17 @@ const Carousel: React.FC = () => {
   });
 
   const [imageIndex, setImageIndex] = useState<number>(0);
-  const [navs, setNavs] = useState({ mainNav: undefined, thumbNav: undefined });
-  const mainSlider = useRef();
-  const thumbSlider = useRef();
+
+  const [mainSlider, setMainSlider] = useState(null);
+  const [thumbSlider, setThumbSlider] = useState(null);
+
+  const [mainSlide, setMainSlide] = useState(null);
+  const [thumbSlide, setThumbSlide] = useState(null);
 
   useEffect(() => {
-    setNavs({
-      mainNav: mainSlider.current,
-      thumbNav: thumbSlider.current,
-    });
-  }, []);
-
-  const { mainNav, thumbNav } = navs;
+    setMainSlider(mainSlide);
+    setThumbSlider(thumbSlide);
+  }, [mainSlide, thumbSlide]);
 
   const settingsMain = {
     infinite: true,
@@ -130,7 +129,6 @@ const Carousel: React.FC = () => {
     focusOnSelect: true,
     prevArrow: <PrevArrow />,
     nextArrow: <NextArrow />,
-
     beforeChange: (_: Slider, next: number) => setImageIndex(next),
     responsive: [
       {
@@ -159,12 +157,12 @@ const Carousel: React.FC = () => {
 
   return (
     <StyledSliderWrapper>
-      {/* @ts-ignore */}
       <StyledMainSlider
         {...settingsMain}
-        asNavFor={thumbNav}
         /* @ts-ignore */
-        ref={(slider) => (mainSlider.current = slider)}
+        asNavFor={thumbSlider}
+        /* @ts-ignore */
+        ref={(mainSlide) => setMainSlide(mainSlide)}
       >
         {images.map((image, index) => (
           <StyledMainSlide
@@ -181,12 +179,12 @@ const Carousel: React.FC = () => {
         ))}
       </StyledMainSlider>
       {!isMobileScreen && ( // スマホサイズの画面では非表示
-        /* @ts-ignore */
         <StyledThumbnailSlider
           {...settingsThumbs}
-          asNavFor={mainNav}
           /* @ts-ignore */
-          ref={(slider) => (thumbSlider.current = slider)}
+          asNavFor={mainSlider}
+          /* @ts-ignore */
+          ref={(thumbSlide) => setThumbSlide(thumbSlide)}
         >
           {images.map((image, index) => (
             <StyledThumbnailSlide
