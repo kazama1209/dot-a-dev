@@ -36,7 +36,7 @@ export const StyledContent = styled.div`
 export const StyledTextWrapper = styled.div`
   max-width: 500px;
   margin: 2rem;
-  padding: 3rem;
+  padding: 2rem;
   text-align: center;
   border: 1px solid ${colorCodes.SNOW};
   border-radius: 8px;
