@@ -20,13 +20,13 @@ import {
   StyledThumbnailSlideImage,
 } from "styles/home/Carousel";
 
-import carousel1 from "images/home/carousel1.jpg";
-import carousel2 from "images/home/carousel2.jpg";
-import carousel3 from "images/home/carousel3.jpg";
-import carousel4 from "images/home/carousel4.jpg";
-import carousel5 from "images/home/carousel5.jpg";
-import carousel6 from "images/home/carousel6.jpg";
-import carousel7 from "images/home/carousel7.jpg";
+import carousel1 from "assets/images/home/carousel1.jpg";
+import carousel2 from "assets/images/home/carousel2.jpg";
+import carousel3 from "assets/images/home/carousel3.jpg";
+import carousel4 from "assets/images/home/carousel4.jpg";
+import carousel5 from "assets/images/home/carousel5.jpg";
+import carousel6 from "assets/images/home/carousel6.jpg";
+import carousel7 from "assets/images/home/carousel7.jpg";
 
 interface ArrowProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined;

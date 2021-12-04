@@ -8,7 +8,7 @@ import {
 } from "styles/common/Background";
 
 import * as colorCodes from "constants/colorCodes";
-import topImage from "images/company/top-image.jpg";
+import topImage from "assets/images/company/top-image.jpg";
 
 const TopImage: React.FC = () => {
   return (

@@ -13,9 +13,9 @@ import {
 import { StyledText } from "styles/common";
 import * as colorCodes from "constants/colorCodes";
 
-import card1 from "images/home/card1.jpg";
-import card2 from "images/home/card2.jpg";
-import card3 from "images/home/card3.jpg";
+import card1 from "assets/images/home/card1.jpg";
+import card2 from "assets/images/home/card2.jpg";
+import card3 from "assets/images/home/card3.jpg";
 
 interface CardItem {
   image: string;

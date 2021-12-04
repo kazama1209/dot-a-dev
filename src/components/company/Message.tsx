@@ -6,7 +6,7 @@ import { StyledText } from "styles/common/Text";
 import { StyledContentBox, lo } from "styles/common/ContentBox";
 import * as colorCodes from "constants/colorCodes";
 
-import feature from "images/company/feature.png";
+import feature from "assets/images/company/feature.png";
 
 const Message: React.FC = () => {
   return (

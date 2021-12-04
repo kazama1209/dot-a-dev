@@ -7,10 +7,10 @@ import {
   StyledPanelContent,
 } from "styles/home/Panels";
 
-import panel1 from "images/home/panel1.jpg";
-import panel2 from "images/home/panel2.jpg";
-import panel3 from "images/home/panel3.jpg";
-import panel4 from "images/home/panel4.jpg";
+import panel1 from "assets/images/home/panel1.jpg";
+import panel2 from "assets/images/home/panel2.jpg";
+import panel3 from "assets/images/home/panel3.jpg";
+import panel4 from "assets/images/home/panel4.jpg";
 
 interface PanelItem {
   backgroundImage: string;

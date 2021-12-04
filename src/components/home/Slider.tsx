@@ -23,9 +23,9 @@ import {
   StyledSliderCaption,
 } from "styles/home/Slider";
 
-import slide1 from "images/home/slide1.jpg";
-import slide2 from "images/home/slide2.jpg";
-import slide3 from "images/home/slide3.jpg";
+import slide1 from "assets/images/home/slide1.jpg";
+import slide2 from "assets/images/home/slide2.jpg";
+import slide3 from "assets/images/home/slide3.jpg";
 
 const images: string[] = [slide1.src, slide2.src, slide3.src];
 
